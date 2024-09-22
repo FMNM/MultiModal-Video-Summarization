@@ -1,4 +1,4 @@
-# Use Case: Lecture Video Summarization 
+# Use Case- Lecture Video Summarization 
 Video Summarization and Context Point & Timestamps Extraction 
 
 ## Objective:
