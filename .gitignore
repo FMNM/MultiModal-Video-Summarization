@@ -1,6 +1,7 @@
 *.mp4
 *.mkv
 *.pt
+*.wav
 
 video_frames/
 key_frames/

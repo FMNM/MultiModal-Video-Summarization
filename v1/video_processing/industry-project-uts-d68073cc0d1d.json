@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "industry-project-uts",
+  "private_key_id": "d68073cc0d1d1eb4ba63216dea4532cae9b09645",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCuMBBOTK+kAsaJ\nU8D6sWLZey/q7s0MF9CjSDS6gfv9503/1OIBrrzg1vFqOBKqy3ihGTaBSxHIoPm4\nB3X1C+veb1MElrGnRDEo4KmEFtdgvWrLc2ZgWqybQxDutU+UsFmspu460Th4jCgQ\nwOID9sqWtkEENamK/BK3PAKM85JrPY1kgyjSh1oImWP0eWKbAyWxO+QbAyaPTRyB\nDu8pgP1IvFVX3DXBHVKn1CrsT5wMD5quHK4hOD4Vz4GbRLEt+WCQ4dl2Ws7rP67S\nEgQsUxoKR3Z2YBtrHoXB8NnVZJTtjZAUQoNf47AkD6eWzC597lSjvVv+uGLxYVij\nIpOG2yrRAgMBAAECggEAC0zg8e4gWEKPK2o8kxxI7mpYfHmg4c+gYHIXFvZx06da\n3xBU195vMHhL/HkbdOsdrfiFxF42Ds8ABFlaOgXbong/FDAhNwRshVtgg/TmD3JF\nEw0vL2xn1ZbElXKRHB3+Df5dEYHF6Rl79pec0hGuU5gKoGxJeH52nwk3R8+myGrV\nPxyU4HlEdCixcTqtlZTp/yWeBqIw+os3JUeQoEdMAc5Ej+rxbuLz9LhK+EvIMpMJ\nsmJ/txACXgnbSlJM/wZzhhyFP7k9FAm6jzXaWfmY6KyfCukblq36JAbrmwaNCdTl\nsezhf26qmH5dSOth+p2ZcXTlcdWJJC7JqvxgvNpDZQKBgQDubyNSqY3ciHnXjgx3\n9PQO2WNGTMh0flW8O9BzT/zaxaBWPzakQ9WIfomU6uDvBmRODs/6MRralylkexno\nNTXwy1lCWT0Y4oC+LLmbPJK9LKFanBRT1847Iz/DLl7LDU3ejuArKiQvCx4LMjra\nmuKSGGxtO4Y4Us425Wm1fwIq/wKBgQC7BT2Ohl/Qd3GkFomRijDp114diiMJINSX\np87WQcRsd0qUAjezdYKLs4re3c1MhYEigkQL5Ls3vO82BcJCLaR5jV+axZ6ECrRO\niiUdqYcRfAisG6L/Cw+I28NGQ1fAvavNSg+g3dlkxKt/afdz62uxlMoBFUQCvHGp\nwLre9ci6LwKBgQDJ9TsvLkzp6nOBwGERTltXJI0xI6J7AfNu4B89PRhI2jJoO1z2\nIDsDRWMVzyk9bOWTNHq3SdacJoO6B4c3J7MLxcJSL7JPnLM94jZIpjMIp3/4dtHE\n/rtBXicJFQLX7OnzRIPeK/DAJCOLij1Novmck7FriIq0tHbVCtbSE8VrUwKBgDU7\ncqAEw3T06pXIDHQun2mP8av6y6onfBuGmisGIUC2W7XxQ6WDBxt4iUiSXYMwZOdL\nqM6x1lAxKO15iieIEk6+3L2TDmGLInNQguwEevuREG7clvJ9VXihBN4VAP9NfX87\nW2NwghZanG3x3YtTMR4kubLBONCGjtvAjfA0iWPlAoGBAIU5KPJuTaCKmU7Kblxm\nBQDK0BqGY01wa6ZWsR2hpKidgsxz/EjN9olS1aQTqsQTvZW5hikBezMTIXfkA2hC\nAvvL5jfly7ns+R/CrIsQitLrZs5Kx+5TjbaYgj+oHArpMOdx3Ix/5n5yvVLd1poT\nQiHW7oET9b2m64RxFMvUiRtw\n-----END PRIVATE KEY-----\n",
+  "client_email": "farhan-uts@industry-project-uts.iam.gserviceaccount.com",
+  "client_id": "104049547765547465425",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/farhan-uts%40industry-project-uts.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
