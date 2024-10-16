@@ -27,7 +27,7 @@ submitBtn.addEventListener("click", async () => {
     submitBtn.disabled = true;
     submitBtn.textContent = "Processing...";
 
-    const response = await fetch("/process", {
+    const response = await fetch("http://localhost:5000/process", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ video_link: videoUrl }),
@@ -101,7 +101,7 @@ sendBtn.addEventListener("click", async () => {
 
   // Send question to backend
   try {
-    const response = await fetch("/query", {
+    const response = await fetch("http://localhost:5000/query", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question, session_id: sessionId }),
@@ -137,10 +137,9 @@ function addChatMessage(sender, message) {
 
 // Function to extract YouTube video ID
 function extractYouTubeID(url) {
-  const regExp =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
-  if (match && match[2].length == 11) {
+  if (match && match[2].length === 11) {
     return match[2];
   } else {
     return null;
