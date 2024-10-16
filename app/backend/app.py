@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, session
+from flask_cors import CORS
 import os
 import json
 from methods import (
@@ -10,6 +11,7 @@ from uuid import uuid4
 
 # Flask application
 app = Flask(__name__)
+CORS(app)
 
 # Secret key for session management
 app.secret_key = os.getenv("SECRET_KEY", "your_secret_key")
