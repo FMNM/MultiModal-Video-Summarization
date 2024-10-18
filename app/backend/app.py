@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 import os
-import json
+import platform
 from methods import (
     process_lecture_video,
     create_embeddings,
@@ -28,15 +28,17 @@ def process_video():
     if not video_link:
         return jsonify({"error": "No video link provided."}), 400
 
+    force = True if data.get("force").lower() == "true" else False
+
     # Generate a unique session ID
     session_id = str(uuid4())
     session["session_id"] = session_id
 
-    audio_output_path = f"temp/{session_id}"
+    session_path = f"temp/{session_id}"
 
     # Process video and generate topic summaries
     try:
-        overall_summary, topic_summaries, _ = process_lecture_video(video_link, audio_output_path)
+        overall_summary, topic_summaries, _ = process_lecture_video(video_link, session_path, force)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -80,6 +82,9 @@ def query():
 
 
 if __name__ == "__main__":
+    # Use 5001 on macOS as 5000 is occupied by Control Center
+    port = 5001 if platform.system() == "Darwin" else 5000
+
     # Ensure the temp directory exists
     os.makedirs("temp", exist_ok=True)
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=port)
