@@ -3,7 +3,7 @@ __all__ = ["process_lecture_video", "create_embedding", "query_with_rag"]
 
 from rag import create_embeddings, query_with_rag
 
-from text import summarize_text_in_chunks, topic_segmentation, summarize_topics, generate_topics_from_topic_segments
+from text import summarize_text_in_chunks, smart_segment_transcript, summarize_topics, generate_topic_labels_for_clusters
 
 from audio import download_audio, transcribe_audio_with_timestamps
 
@@ -36,19 +36,19 @@ def process_lecture_video(video_link, session_path, force):
     logger.info("STEP 3: Generating overall summary...")
     overall_summary = summarize_text_in_chunks(transcription, session_path, force=force, chunk_size=2048)
 
-    # Step 4: Segment the transcription by topical context using BERTopic
+    # Step 4: Segment the transcription into topics using semantic similarity
     logger.info("STEP 4: Segmenting transcription into topics...")
-    topic_segments, topic_model = topic_segmentation(segments, session_path, force=force)
+    topic_segments = smart_segment_transcript(segments, session_path)
 
-    # Step 5: Get topic from topic_segments using Flan-T5
-    logger.info("STEP 5: Getting topics from topic_segments...")
-    topics = generate_topics_from_topic_segments(topic_segments, session_path)
+    # Step 5: Generate topic labels for each segment using Flan-T5
+    logger.info("STEP 5: Generating topic labels...")
+    topics = generate_topic_labels_for_clusters(topic_segments, session_path)
 
     # Step 6: Summarize each segmented topic using BART
-    logger.info("STEP 5: Summarizing each topic...")
-    topic_summaries = summarize_topics(topic_segments, session_path, force=force)
+    logger.info("STEP 6: Summarizing each topic...")
+    topic_summaries = summarize_topics(topics, session_path, force=force)
 
-    return overall_summary, topic_summaries, topic_model
+    return overall_summary, topic_summaries
 
 
 if __name__ == "__main__":
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     force = False
 
-    overall_summary, topic_summaries, _ = process_lecture_video(sample_video_link, session_path, force=force)
+    overall_summary, topic_summaries = process_lecture_video(sample_video_link, session_path, force=force)
 
     embeddings = create_embeddings(topic_summaries, session_path, force=force)
 

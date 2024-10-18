@@ -6,6 +6,8 @@ import os
 import re
 from pathlib import Path
 from transformers import T5Tokenizer, T5ForConditionalGeneration
+from sentence_transformers import SentenceTransformer, util
+import torch
 
 from utils import time_check_decorator, save_data, load_data, sha256
 
@@ -72,146 +74,217 @@ def summarize_text_in_chunks(text, session_path, force=True, chunk_size=2048, mi
     return overall_summary
 
 
-# Function to dynamically segment the transcription into topics using BERTopic
-def topic_segmentation(segments, session_path, force=True):
-    topic_segments_filepath = Path(f"{session_path}/topic_segments.json")
-
-    texts = [segment["text"] for segment in segments]
-
-    already_exist = topic_segments_filepath.is_file()
-
-    logger.info(f"topic_segments_filepath:{topic_segments_filepath} force:{force}, already_exist:{already_exist}")
-
-    topic_model = BERTopic()
-
-    if already_exist:
-        logger.info("{topic_segments_filepath} already exist}")
-
-    if not force and already_exist:
-        topic_segments = load_data(topic_segments_filepath)
-    else:
-        logger.info("Segmenting topics...")
-        try:
-            topics, _ = topic_model.fit_transform(texts)
-        except Exception as e:
-            logger.error(f"Error during topic segmentation: {e}")
-            raise
-
-        # Group segments by topics with timeframes
-        topic_segments = {}
-        for idx, topic in enumerate(topics):
-            if topic not in topic_segments:
-                topic_segments[topic] = {
-                    "text": [],
-                    "start_time": segments[idx]["start"],
-                    "end_time": segments[idx]["end"],
-                    "topic_info": topic_model.get_topic(topic),
-                }
-            topic_segments[topic]["text"].append(segments[idx]["text"])
-            topic_segments[topic]["end_time"] = segments[idx]["end"]  # Update the end time
-
-        save_data(topic_segments, topic_segments_filepath)
-
-    return topic_segments, topic_model
+# Load models for topic extraction and sentence embeddings
+tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-large")
+flan_t5_model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-large")
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
-# Function to get text from topic_segments and generate encapsulating topics
-def generate_topics_from_topic_segments(topic_segments, session_path):
+def smart_segment_transcript(segments, session_path, similarity_threshold=0.65, min_cluster_size=60, max_cluster_size=180):
     """
-    Generate topic labels for each topic segment using flan-t5-large.
+    Perform context-aware clustering of transcript segments based on sentence similarity.
     """
+
+    clusters = []
+    current_cluster = [segments[0]]  # Initialize the first cluster
+    current_cluster_embeddings = [embedding_model.encode(segments[0]["text"], convert_to_tensor=True)]
+
+    for i in range(1, len(segments)):
+        segment_embedding = embedding_model.encode(segments[i]["text"], convert_to_tensor=True)
+
+        # Calculate average embedding of the current cluster
+        cluster_embedding = torch.mean(torch.stack(current_cluster_embeddings), dim=0)
+
+        # Compute cosine similarity between the current segment and the cluster
+        similarity = util.cos_sim(cluster_embedding, segment_embedding).item()
+
+        if similarity >= similarity_threshold and len(current_cluster) < max_cluster_size:
+            # Add to the current cluster if similar enough and within size limits
+            current_cluster.append(segments[i])
+            current_cluster_embeddings.append(segment_embedding)
+        else:
+            # Save the completed cluster if it meets minimum size criteria
+            if len(current_cluster) >= min_cluster_size:
+                clusters.append(current_cluster)
+
+                # Start a new cluster with the current segment
+                current_cluster = [segments[i]]
+                current_cluster_embeddings = [segment_embedding]
+            else:
+                # If the cluster is too small, continue adding the segment to the same cluster
+                current_cluster.append(segments[i])
+                current_cluster_embeddings.append(segment_embedding)
+
+    # Add the final cluster
+    if current_cluster:
+        clusters.append(current_cluster)
+
+    # Save the clusters to a JSON file
+    save_data(clusters, Path(f"{session_path}/topic_segments.json"))
+
+    return clusters
+
+
+def generate_topic_labels_for_clusters(clusters, session_path):
+    """Generate topic labels using Flan-T5 for each segment cluster."""
+
     topics = []
+    logger.info("Generating topic labels for clusters...")
 
-    logger.info("Generating topic labels from topic segments...")
+    for cluster in tqdm(clusters, desc="Processing clusters"):
+        combined_text = " ".join([segment["text"] for segment in cluster])
 
-    # Load the flan-t5 model and tokenizer
-    tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-large")
-    model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-large")
-
-    for topic, data in tqdm(topic_segments.items(), desc="Processing topic segments"):
-        # Combine all text lines into a single string for each topic
-        combined_text = " ".join(data["text"])
-
-        # Tokenize and generate topic label
+        # Generate a concise topic label using Flan-T5
         inputs = tokenizer.encode(
-            "Generate a topic: " + combined_text,
+            "Generate a topic for: " + combined_text,
             return_tensors="pt",
-            max_length=512,  # Adjust for reasonable input size
+            max_length=512,
             truncation=True,
         )
 
         try:
-            summary_ids = model.generate(
+            summary_ids = flan_t5_model.generate(
                 inputs,
-                max_length=8,  # Limit the length of the topic label
-                min_length=1,
+                max_length=12,
+                min_length=3,
                 length_penalty=2.0,
                 num_beams=4,
                 early_stopping=True,
             )
-            summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+            topic_label = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         except Exception as e:
-            logger.error(f"Error generating topic label for topic {topic}: {e}")
-            summary = "Unknown Topic"
+            logger.error(f"Error generating topic label: {e}")
+            topic_label = "Unknown Topic"
 
-        # Store the generated topic with metadata
+        # Extract start and end time from the cluster
+        start_time = cluster[0]["start"]
+        end_time = cluster[-1]["end"]
+
         topic_info = {
-            "topic_id": topic,
-            "topic_label": summary,
-            "start_time": data["start_time"],
-            "end_time": data["end_time"],
-            "texts": data["text"],  # Store the original texts for reference
+            "topic_label": topic_label,
+            "start_time": start_time,
+            "end_time": end_time,
+            "texts": [segment["text"] for segment in cluster],
         }
-
         topics.append(topic_info)
 
-    # Save the generated topics to a JSON file
+    # Save the topics to a JSON file
+    save_data(topics, Path(f"{session_path}/topics.json"))
+
+    return topics
+
+
+# Function to get text from topic_segments and generate encapsulating topics
+def generate_topic_labels_for_clusters(clusters, session_path):
+    """Generate topic labels using Flan-T5 for each segment cluster."""
+
+    topics = []
+    logger.info("Generating topic labels for clusters...")
+
+    for cluster in tqdm(clusters, desc="Processing clusters"):
+        combined_text = " ".join([segment["text"] for segment in cluster])
+
+        # Generate a concise topic label using Flan-T5
+        inputs = tokenizer.encode(
+            "Generate a topic for: " + combined_text,
+            return_tensors="pt",
+            max_length=512,
+            truncation=True,
+        )
+
+        try:
+            summary_ids = flan_t5_model.generate(
+                inputs,
+                max_length=12,
+                min_length=3,
+                length_penalty=2.0,
+                num_beams=4,
+                early_stopping=True,
+            )
+            topic_label = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+        except Exception as e:
+            logger.error(f"Error generating topic label: {e}")
+            topic_label = "Unknown Topic"
+
+        # Extract start and end time from the cluster
+        start_time = cluster[0]["start"]
+        end_time = cluster[-1]["end"]
+
+        topic_info = {
+            "topic_label": topic_label,
+            "start_time": start_time,
+            "end_time": end_time,
+            "texts": [segment["text"] for segment in cluster],
+        }
+        topics.append(topic_info)
+
+    # Save the topics to a JSON file
     save_data(topics, Path(f"{session_path}/topics.json"))
 
     return topics
 
 
 # Generate summaries for each segmented topic
-def summarize_topics(topic_segments, session_path, force=True, chunk_size=1024):
+def summarize_topics(topics, session_path, force=True, chunk_size=1024):
+    """
+    Generate summaries for each topic using BART.
+    """
     topic_summaries_filepath = Path(f"{session_path}/topic_summaries.json")
-
     already_exist = topic_summaries_filepath.is_file()
 
-    logger.info(f"topic_summaries_filepath:{topic_summaries_filepath} force:{force}, already_exist:{already_exist}")
+    logger.info(f"topic_summaries_filepath: {topic_summaries_filepath} force: {force}, already_exist: {already_exist}")
 
-    if already_exist:
-        logger.info(f"{topic_summaries_filepath} already exists.")
+    if already_exist and not force:
+        logger.info(f"{topic_summaries_filepath} already exists, loading existing data.")
+        return load_data(topic_summaries_filepath)
 
-    if not force and already_exist:
-        topic_summaries = load_data(topic_summaries_filepath)
-    else:
-        topic_summaries = {}
-        summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=device_index)
+    topic_summaries = {}
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
 
-        logger.info("Summarizing topics...")
-        for topic, data in tqdm(topic_segments.items(), desc="Summarizing each topic"):
-            full_text = " ".join(data["text"])
+    logger.info("Summarizing topics...")
 
-            # Split the full text into chunks to handle large inputs
-            text_chunks = [full_text[i : i + chunk_size] for i in range(0, len(full_text), chunk_size)]
-            summaries = []
+    # Ensure topics is a list
+    if not isinstance(topics, list):
+        raise ValueError("Expected 'topics' to be a list of dictionaries.")
 
-            for chunk in text_chunks:
-                try:
-                    summary = summarizer(chunk, max_length=150, min_length=40, do_sample=False)[0]["summary_text"]
-                    summaries.append(summary)
-                except Exception as e:
-                    logger.error(f"Error summarizing topic chunk: {e}")
-                    summaries.append("")
+    for topic_info in tqdm(topics, desc="Summarizing each topic"):
+        # Ensure topic_info is a dictionary
+        if not isinstance(topic_info, dict):
+            raise ValueError(f"Expected a dictionary for topic_info, but got {type(topic_info)}")
 
-            # Combine chunk summaries and store them
-            topic_summaries[topic] = {
-                "summary": " ".join(summaries),
-                "start_time": data["start_time"],
-                "end_time": data["end_time"],
-                "full_text": full_text,  # Added for RAG retrieval
-            }
+        if "texts" not in topic_info:
+            raise KeyError(f"Missing 'texts' key in topic_info: {topic_info}")
 
-        save_data(topic_summaries, topic_summaries_filepath)
+        # Combine all texts for the topic into a single string
+        full_text = " ".join(topic_info["texts"])
+
+        # Split the full text into manageable chunks
+        text_chunks = [full_text[i : i + chunk_size] for i in range(0, len(full_text), chunk_size)]
+
+        summaries = []
+        for chunk in text_chunks:
+            try:
+                # Generate a summary for each chunk using BART
+                summary = summarizer(chunk, max_length=150, min_length=40, do_sample=False)[0]["summary_text"]
+                summaries.append(summary)
+            except Exception as e:
+                logger.error(f"Error summarizing topic chunk: {e}")
+                summaries.append("")
+
+        # Combine all summaries into one
+        combined_summary = " ".join(summaries)
+
+        # Store the summary with relevant metadata
+        topic_label = topic_info.get("topic_label", f"Topic {len(topic_summaries) + 1}")
+
+        topic_summaries[topic_label] = {
+            "summary": combined_summary,
+            "start_time": topic_info["start_time"],
+            "end_time": topic_info["end_time"],
+            "full_text": full_text,  # Store original text for RAG retrieval
+        }
+
+    # Save the summaries to a JSON file
+    save_data(topic_summaries, topic_summaries_filepath)
 
     return topic_summaries
