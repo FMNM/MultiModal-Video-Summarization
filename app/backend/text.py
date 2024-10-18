@@ -55,7 +55,7 @@ def summarize_text_in_chunks(text, session_path, force=True, chunk_size=2048, mi
         if current_chunk:
             text_chunks.append(current_chunk.strip())
 
-        save_data("\n".join(text_chunks), f"{session_path}/text_chunks.txt")
+        save_data("\n".join(text_chunks), Path(f"{session_path}/text_chunks.txt"))
         
         logger.info(f"len:len(text_chunks)")
 
