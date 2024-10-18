@@ -1,0 +1,1233 @@
+{
+    "4": {
+        "text": [
+            " Hi everyone, welcome back.",
+            " The room was much more tense this time.",
+            " Way ahead of all.",
+            " far.",
+            " This is what we learned about yesterday.",
+            " and basically background for all of you so that we're all on the same page when we",
+            " it just took.",
+            " At that particular moment.",
+            " Maybe in a few time steps down the future or maybe in life, maybe years.",
+            " And that can be expanded to look exactly like this.",
+            " forth.",
+            " right at this moment right now.",
+            " in the future.",
+            " And that's exactly how this is captured here as well mathematically.",
+            " you all together.",
+            " So let me say that one more time in a different way.",
+            " Now one thing that I think maybe we should all be asking ourselves now is this seems like",
+            " Yep.",
+            " Exactly.",
+            " So that's exactly right.",
+            " right?",
+            " ourselves in.",
+            " in?",
+            " Maybe some of you recognize this.",
+            " Now, the first point I want to make here is that sometimes, even for us, as humans,",
+            " Okay. Yeah. Have a more?",
+            " Exactly. And actually, there's a very interesting thing.",
+            " So when I first saw this, actually, it was very unintuitive for me.",
+            " like one of the answers said.",
+            " that look like this.",
+            " for free, almost.",
+            " Now, what would happen? Right. So actually, the question I want to pose here is really, you know,"
+        ],
+        "start_time": 0.0,
+        "end_time": 1432.9,
+        "topic_info": [
+            [
+                "exactly",
+                0.08869511578198257
+            ],
+            [
+                "maybe",
+                0.08469369034614381
+            ],
+            [
+                "this",
+                0.06126676376903305
+            ],
+            [
+                "all",
+                0.05937868301340634
+            ],
+            [
+                "like",
+                0.05933190983499012
+            ],
+            [
+                "now",
+                0.057572153489049704
+            ],
+            [
+                "moment",
+                0.051304231250807894
+            ],
+            [
+                "so",
+                0.049714520837719364
+            ],
+            [
+                "more",
+                0.047007818396892144
+            ],
+            [
+                "right",
+                0.04598173052991426
+            ]
+        ]
+    },
+    "7": {
+        "text": [
+            " Today I think that these two lectures today are really exciting because they start to",
+            " move beyond a lot of what we've talked about in the class so far, which is focusing a",
+            " And specifically in today, in this lecture right now, I'm going to start to talk about how",
+            " we can learn about this very long-standing field of how we can specifically marry two",
+            " already started learning about as part of this course.",
+            " Now this marriage of these two fields is actually really fascinating to me, particularly",
+            " because like I said, it moves away from this whole paradigm of, or really this whole",
+            " paradigm that we've been exposed to in the class thus far.",
+            " I thought I'm learning something.",
+            " this paradigm of all the different topics that you've been exposed to in this class so",
+            " As a whole, I think that we've really covered two different types of learning in this",
+            " Up until now, we've really started focusing in the beginning part of the lectures, firstly,",
+            " The second class of learning approaches that we've discovered yesterday in yesterday's",
+            " lecture was that of unsupervised learning.",
+            " In today, like I said, we're going to be focusing exclusively on this third type of learning",
+            " start discussing some of the more complex components of today's lecture.",
+            " It's important to remember that unlike other types of learning that we've covered in this",
+            " going to be talking about today.",
+            " But generally, in this lecture, what I want to focus on is actually how we can obtain this",
+            " And that's what today's lecture is going to be talking about primarily.",
+            " we're going to briefly touch on as part of today's lecture.",
+            " The first class is what's going to be called value learning.",
+            " We'll talk more details about that later in the lecture."
+        ],
+        "start_time": 11.200000000000001,
+        "end_time": 1016.9,
+        "topic_info": [
+            [
+                "lecture",
+                0.08898448256634671
+            ],
+            [
+                "weve",
+                0.07882493605100403
+            ],
+            [
+                "about",
+                0.07484884979098726
+            ],
+            [
+                "learning",
+                0.07008318508383332
+            ],
+            [
+                "today",
+                0.06949449558474345
+            ],
+            [
+                "class",
+                0.06949449558474345
+            ],
+            [
+                "this",
+                0.0644451402092384
+            ],
+            [
+                "in",
+                0.06393099700864918
+            ],
+            [
+                "really",
+                0.060808859153137586
+            ],
+            [
+                "going",
+                0.057688244150490606
+            ]
+        ]
+    },
+    "-1": {
+        "text": [
+            " lot on really static data sets.",
+            " but that data set is typically fixed in our world, right?",
+            " We collect, we go out and collect that data set, we deploy it on our machine learning",
+            " or deep learning algorithm, and then we can evaluate on a brand new data set.",
+            " And that is very different than the way things work in the real world.",
+            " data, together out into reality, exploring, interacting with its environment, and trying",
+            " to be able to learn how to best perform any particular task that it may need to accomplish.",
+            " And typically, we want to be able to do this without explicit human supervision, right?",
+            " You're going to try and learn through reinforcement, making mistakes in your world, and then",
+            " collecting data on those mistakes to learn how to improve.",
+            " Now this is obviously a huge field or a huge topic in the field of robotics and autonomy.",
+            " You can think of self-driving cars and robot manipulation, but also very recently we've",
+            " So one really cool thing is that now you can even imagine this combination of robotics",
+            " Now training robots to play against us in the real world, and I'll just play this very",
+            " Perfect information and to explain in real time.",
+            " It also requires long-term planning and the ability to choose what action to take from",
+            " millions and millions of possibilities.",
+            " I'm hoping for a 5-0 not to lose any games, but I think the realistic goal would be",
+            " 4-1 in my favour.",
+            " I think he looks more confident and TLO is quite nervous before.",
+            " He didn't know what to expect.",
+            " I wasn't expecting that good.",
+            " Everything that he did was proper.",
+            " It was calculated and it was done well.",
+            " It's much better than expected.",
+            " I lost every single one of 5 games.",
+            " course to date.",
+            " Supervised learning is in this domain where we're given data in the form of x's, our inputs,",
+            " and our labels y.",
+            " There's no notion of labels.",
+            " data.",
+            " In today's lecture, we're going to talk about yet another type of learning algorithms.",
+            " This is what the agent, the neural network is going to observe.",
+            " starve.",
+            " Before we go any further, I just want to start by building up some very key terminology",
+            " Let's start by building up some of this terminology.",
+            " We're trying to build an agent that can do these tasks and the algorithm is that agent.",
+            " Where it exists and it moves around in.",
+            " space.",
+            " It's not necessarily just going right or left or straight.",
+            " Essentially, all of these try to effectively evaluate some way of measuring the success",
+            " infinity.",
+            " Often it's actually very useful for all of us to consider not only the sum of all of",
+            " and is discovered by the agent.",
+            " And the reason that we want to do this is actually this dampening factor is designed to make",
+            " between zero and one.",
+            " infinity.",
+            " perform a lot of tasks right off the bat, right?",
+            " And we can simply pry out number one.",
+            " If we have a discrete action space, we can simply try out all possible actions, compute",
+            " procedure.",
+            " I kind of skipped a lot of steps in that last slide where I just said, let's suppose I",
+            " real world.",
+            " And that's exactly this process that we've just talked about.",
+            " The second class of algorithms, which we'll touch on right at the end of today's lecture,",
+            " is kind of a different framing of the same approach.",
+            " And then, we're going to find the first class of algorithms that we're going to find",
+            " to take, but instead of first optimizing the Q function and finding the Q value and then",
+            " First, let's cover this first class of approaches, which is Q learning approaches, and we'll build up",
+            " just to start to understand how we could estimate this in the beginning.",
+            " So first, let me introduce this game.",
+            " The game here is essentially one where the agent is able to move left or right, this paddle on the",
+            " that we can expect based on a given state and action pair that we may find ourselves in this game.",
+            " Here is A and B, two different options that we can be presented with in this game.",
+            " we'll make it and not miss it, hopefully, right?",
+            " Which one would result in a greater reward for the neural network or for the agent?",
+            " How about B?",
+            " How about someone who picked B? Can you tell me why B?",
+            " For A, you only have like the maximum you can take off is like one,",
+            " because after you reflect your automatic comes back down,",
+            " Why A is actually working much worse than B, but in general,",
+            " this very conservative action of B, you're kind of exactly like you said,",
+            " the two answers we're implying, is that A is a very conservative action.",
+            " You can see, in general, this action is going to be quite conservative.",
+            " If you look at B now, with B, you're kind of having agency,",
+            " in any given state that we find ourselves in.",
+            " these two objects as well.",
+            " and some past history as well, but all of that information can be combined together",
+            " is to move to the right to the left to stay still.",
+            " The goal here is to estimate the single number output that measures what is the expected value",
+            " Now, oftentimes what you'll see is that if you wanted to evaluate, let's suppose,",
+            " And then that neural network will tell you for all possible actions, what's the maximum?",
+            " And specifically, I want all of you to think about really the best case scenario just to start with.",
+            " And this can serve as essentially the ground truth to the agent.",
+            " we have also a predicted variable that is going to come as part of the output of every single one of these potential actions that could be taken.",
+            " We minimize their distance over two over many, many different iterations of flying our neural network in this environment, observing actions and observing not only the actions, but most importantly,",
+            " after the action is committed or executed, we can see exactly the ground truth expected return, right.",
+            " So we have the ground truth labels to train and supervise this model directly from the actions that were executed as part of random selection, for example.",
+            " Now, let me just stop right there and maybe summarize the whole process one more time and maybe a bit different terminology just to give everyone kind of a different perspective on this same problem.",
+            " Here, the actions in the tary breakout, for example, should be three actions, we can either go left, we can go right, or we can do nothing, we can stay where we are.",
+            " Now, one very popular or very famous approach that showed this was presented by DeepMind, Google DeepMind several years ago, where they showed that you could train a q value network.",
+            " And you could train this one network for a variety of different tasks all across the Atari breakout ecosystem of games. And for each of these tasks, the really fascinating thing that they showed was for this very simple algorithm, which really relies on random choice of selection of actions.",
+            " And then, you know, learning from, you know, actions that don't do very well that you discourage them and trying to do actions that did perform well more frequently, very simple algorithm.",
+            " Now, there are several very important downsides of QLearning and hopefully these are going to motivate the second part of today's lecture, which we'll talk about.",
+            " But the first one that I want to really convey to everyone here is that QLearning is naturally applicable to discrete action spaces, right?",
+            " Because you can think of this output space that we're providing is kind of like one number per action that could be taken.",
+            " But for the most part, QLearning is very well suited for discrete action spaces and we'll talk about ways of overcoming that with other approaches a bit later.",
+            " So you can very frequently get caught in situations where you keep repeating the same actions and you don't learn to explore potentially different options that you may be thinking of.",
+            " So to address these very important challenges, that's hopefully going to motivate now the next part of today's lecture, which is going to be focused on policy learning, which is a different class of reinforcement learning algorithms that are different than QLearning algorithms.",
+            " So we can see that if these predicted probabilities here, right, in this example of Atari, right, going left has the probability of being the highest value action with 90% staying in the center.",
+            " That's a probability of 10% going right is 0%. So ideally, what our neural networks should do in this case is 90% of the time in this situation go to the left 10% of the time, it could still try staying where it is, but never it should go to the right.",
+            " But here the policy network has a very formulated output all of the numbers here in the output have to sum to one because this is a probability distribution, right.",
+            " So if we want to determine the best action to take, we would simply take the mode of this distribution, right, the highest point, that would be the speed at which we should move and the direction that we should move in.",
+            " Okay, great. So now let's maybe take a look at how policy gradient networks can be trained and you know step through that process as well as we look at a very concrete example and maybe let's start by just revisiting this reinforcement learning loop that we've started this class with.",
+            " Now, let's specifically consider the example of training an autonomous vehicle since I think that this is a particularly very intuitive example that we can walk through the agent here is the vehicle, right, the state could be obtained through many sensors that could be mounted on the vehicle itself.",
+            " So, for example, autonomous vehicles are typically equipped with sensors like cameras, light hours, radars, etc. All of these are giving observational inputs to the, to the vehicle.",
+            " So now let's take a look at how we could train a policy gradient neural network to solve this task of self driving cars as a concrete example.",
+            " So the first part of that data acquisition pipeline is first to initialize our agent to go out and collect some data.",
+            " So we start our vehicle, our agent, and in the beginning, of course, it knows nothing about driving. It's never been exposed to any of these rules of the environment or the observation before.",
+            " This becomes our mini data set that we'll use for the first round of training.",
+            " Let's take those data sets and now we'll do one step of training. The first step of training that we'll do is to take, excuse me, to take the later half of our trajectory that our agent ran and decrease the probability of actions that resulted in low rewards.",
+            " And you keep repeating this over and over again until you notice that the agent learns to perform better and better every time until it finally converges. And at the end, the agent is able to basically follow lanes, usually swarving a bit side to side while it does that, without crashing.",
+            " And this is actually really fascinating because this is a self-driving car that we never taught anything about what a lane marker means or what are the rules of the road, anything about that, right?",
+            " This was a car that learned entirely just by going out, crashing a lot, and trying to figure out what to do to not keep doing that in the future.",
+            " And the remaining question is actually how we can update that policy as part of this algorithm that I'm showing you on the left-hand side. How can we basically formulate that same algorithm and specifically the update equation steps four and five right here? These are the two really important steps of how we can use those two steps to train our policy and decrease the probability of bad events while promoting these likelihoods of all these good events.",
+            " So let's assume the, let's look at the loss function, first of all, the loss function for a policy gradient neural network looks like this and then we'll start by dissecting it to understand why this works the way it does.",
+            " Now, we can plug this into the loss of gradient descent algorithm to train our neural network when we see this policy gradient algorithm, which you can see highlighted here.",
+            " This gradient is exactly of the policy part of the neural network. That's the probability of selecting an action given a specific state.",
+            " And if you remember before when we defined, what does it mean to be a policy function? That's exactly what it means, right? Given a particular state that you find yourself in, what is the probability of selecting a particular action with the highest likelihood?",
+            " And that's exactly where this method gets its name from this policy gradient piece that you can see here.",
+            " Now, I want to take maybe just a very brief second towards the end of the class here just to talk about some of the challenges and keep you in line with the first lecture today, some of the challenges of deploying these types of algorithms in the context of the real world, right?",
+            " Yeah, exactly. So it's step two, right? If you wanted to do this in reality, right? That essentially means that you want to go out, collect your car, crashing it a bunch of times just to learn how to not crash it.",
+            " Right? And that's, you know, that's simply not feasible, right? Number one, it's also, you know, very dangerous. Number two.",
+            " So in fact, we did exactly this. We placed agents into our simulator. We trained them using the exact algorithms that you learned about in today's lecture, these policy gradient algorithms.",
+            " And one very popular application that a lot of people will tell you about and talk about is the game of go. So here reinforcement learning agents could be actually tried to put against the test against, you know, grand master level go players.",
+            " But then given this pre trained model, essentially, you could use it to bootstrap in reinforcement learning algorithm that would play against itself in order to learn how to improve even beyond the human levels.",
+            " So it would take its human understandings, try to imitate the humans first of all, but then from that imitation, they would pin these two neural networks against themselves, play a game against themselves, and the winners would be receiving a reward.",
+            " Different board states that it could take from this particular state and using those predicted values to guide its planning of, you know, what action should it take into the future.",
+            " We saw two different types of reinforcement learning approaches of how we could optimize these solutions first being Q learning where we're trying to actually estimate given a state, you know, what is the value that we might expect for any possible action in the second way was to take a much more end to end approach and say how given a state that we see ourselves in what is the likelihood that I should take any given action to maximize the potential that I have in this particular state."
+        ],
+        "start_time": 21.04,
+        "end_time": 3431.9,
+        "topic_info": [
+            [
+                "to",
+                0.04160719951231437
+            ],
+            [
+                "of",
+                0.039447252948536786
+            ],
+            [
+                "and",
+                0.039016319724015175
+            ],
+            [
+                "the",
+                0.03872604644481724
+            ],
+            [
+                "this",
+                0.03015024844593625
+            ],
+            [
+                "that",
+                0.029703300882772614
+            ],
+            [
+                "is",
+                0.02964092148264418
+            ],
+            [
+                "we",
+                0.02800394336888559
+            ],
+            [
+                "you",
+                0.027789613370669528
+            ],
+            [
+                "in",
+                0.02628856570984071
+            ]
+        ]
+    },
+    "11": {
+        "text": [
+            " topics, the first topic being reinforcement learning, which has existed for many, many",
+            " This is the key motivation of reinforcement learning.",
+            " started seeing incredible advances of deeper reinforcement learning specifically also on",
+            " Let's take a step back first of all and think about how reinforcement learning fits into",
+            " In reinforcement learning, we're going to be only given data in the form of what are",
+            " The goal of reinforcement learning is to build an agent that can learn how to maximize",
+            " This is the third component that is specific to reinforcement learning.",
+            " paradigm, which is reinforcement learning.",
+            " course, reinforcement learning is a bit unique because it has one more component here in addition",
+            " Now finally, it's very important in reinforcement learning, this special function called the",
+            " And broadly speaking, there are two classes of reinforcement learning algorithms that",
+            " that intuition and that knowledge onto the second part of policy learning.",
+            " So we start by initializing our agent, right, remember that we have no training data, right. So we have to think about actually reinforcement learning is almost like a data acquisition plus learning pipeline combined together.",
+            " So that was something really cool that we created here at MIT. But now that we covered all of this foundations of reinforcement learning and policy learning, I want to touch on some other maybe very exciting applications that we're seeing.",
+            " So this is not using reinforcement learning is using supervised learning using the techniques that we covered in lectures one, two, and three.",
+            " So with that all summarized very quickly what we've learned today and conclude for the day. So we've talked a lot about really the foundational algorithms underlying reinforcement learning."
+        ],
+        "start_time": 32.8,
+        "end_time": 3404.9,
+        "topic_info": [
+            [
+                "learning",
+                0.1749833371163659
+            ],
+            [
+                "reinforcement",
+                0.17396030985171593
+            ],
+            [
+                "is",
+                0.04791980906793348
+            ],
+            [
+                "so",
+                0.04567180156080593
+            ],
+            [
+                "that",
+                0.04473157037953594
+            ],
+            [
+                "using",
+                0.040741272963592
+            ],
+            [
+                "component",
+                0.039276865682852935
+            ],
+            [
+                "seeing",
+                0.039276865682852935
+            ],
+            [
+                "of",
+                0.03574118329584247
+            ],
+            [
+                "data",
+                0.03557328591115963
+            ]
+        ]
+    },
+    "8": {
+        "text": [
+            " decades together with a lot of the very recent advances in deep learning, which you've",
+            " And that paradigm is really how we can build a deep learning model using some data set,",
+            " In the real world, you have your deep learning model actually deployed together with the",
+            " Our goal here is to learn a function or a neural network that can learn to predict why",
+            " given our inputs x.",
+            " So that was a kind of a trick that this neural network learned,",
+            " So now the question naturally is, how can we train a neural network that can, indeed,",
+            " So the type of the neural network here naturally, because we have a function",
+            " that takes us input two things, let's imagine our neural network will also take as input",
+            " to the input of a neural network.",
+            " Because what it would mean is that you'd have to run your neural network forward many different times.",
+            " That way you only need to run your neural network once for the given state that you're in.",
+            " we want to train one of these two networks. Let's stick with the network on the right for simplicity,",
+            " just since it's a much more efficient version of the network on the left.",
+            " And the question is, you know, how do we actually train that network on the right?",
+            " And that simply turns into our target, right. Now we can ask basically what does our neural network predict, right.",
+            " So it kind of skips one step and we'll see how we can train those networks.",
+            " So Google deep mind rose to this challenge. They created a couple years ago, developing this solution, which is very much based in the exact same algorithms that you learned about in today's lecture, combining both the value part of this network with residual layers, which will cover in the next lecture tomorrow.",
+            " The first step is that you train a neural network to basically watch human level experts.",
+            " And one of the very important auxiliary tricks that brought this idea to be possible was the usage of this second network, this auxiliary network, which took as input the state of the board and tried to predict, you know, what are all of the different possible board states that might emerge from this particular state, and what would their values be?",
+            " What would their potential returns and their outcomes be? So this network was an auxiliary network that was almost hallucinating, right?",
+            " What if they just started entirely from scratch and just had two neural networks never trained before they start pinning themselves against each other, and you could actually see that you could, without any human supervision at all, have a neural network, learn to not only outperform the solution that"
+        ],
+        "start_time": 38.16,
+        "end_time": 3383.9,
+        "topic_info": [
+            [
+                "network",
+                0.12098864598344938
+            ],
+            [
+                "neural",
+                0.08466192461268596
+            ],
+            [
+                "the",
+                0.0425637627591685
+            ],
+            [
+                "that",
+                0.04125580646490984
+            ],
+            [
+                "deep",
+                0.04072283401065141
+            ],
+            [
+                "train",
+                0.04045873416172335
+            ],
+            [
+                "input",
+                0.03848671837350949
+            ],
+            [
+                "auxiliary",
+                0.03622494706560423
+            ],
+            [
+                "what",
+                0.03158473852678292
+            ],
+            [
+                "our",
+                0.03083224284067445
+            ]
+        ]
+    },
+    "2": {
+        "text": [
+            " out a whole bunch of different actions and different things in that environment in order",
+            " called state action pairs.",
+            " States are observations.",
+            " The actions are the behaviors that this agent takes in those particular states.",
+            " It can take actions in that environment and let's call for notation purposes.",
+            " Let's say the possible set of all actions that it could take is, let's say, a set of",
+            " let's say, list of possible actions.",
+            " It responds in the form of what is called a state.",
+            " A state is simply a concrete and immediate situation that the agent finds itself in.",
+            " From a given state, an agent can send out any form of actions to take some decisions.",
+            " You can think of this as basically enforcing some kind of short term, uh, uh,",
+            " There are some exceptional cases where maybe you want some strange behaviors and they",
+            " The first is the state that you're currently in.",
+            " And the second is a possible action that you could execute in this particular state.",
+            " So here, S of T is that state at time T, A of T is that action that you may want to take",
+            " state.",
+            " So if you wanted to, for example, understand how to what actions to take in a particular",
+            " state.",
+            " what action should be taken?",
+            " Given a state, you can look at your possible action space and pick the one that gives you",
+            " So if we wanted to take a specific action given a specific state, ultimately we need to",
+            " figure out which action is the best action.",
+            " How can you determine what action to take?",
+            " policy, which is what action to take based on a particular state that we find ourselves",
+            " So here's one example. Let's say we find these two state action pairs, right?",
+            " So here you see it trying to enact that policy.",
+            " we can directly use it to determine what is the best action that we can take",
+            " and provided to the network in the form of a state.",
+            " And in addition to that, you may also want to provide it some actions as well.",
+            " And those could be three different actions that could be provided and parameterized",
+            " So what if instead you only provided an input of your state.",
+            " The policy function tells us one step more than that given given a state, what is the best action, right. So it's a very end to end way of thinking about, you know, the agents decision making process based on what I see right now, what is the action that I should take.",
+            " So pi is the policy s is our state. So it's a function that takes as input only the state and it's going to directly output the action.",
+            " So the outputs here give us the desired action that we should take in any given state that we find ourselves in.",
+            " And we record all of the states, all of the actions, and the final reward that it obtained until that termination, right."
+        ],
+        "start_time": 93.4,
+        "end_time": 2518.9,
+        "topic_info": [
+            [
+                "state",
+                0.10705389031442925
+            ],
+            [
+                "action",
+                0.06752844291631989
+            ],
+            [
+                "take",
+                0.058999543286941764
+            ],
+            [
+                "actions",
+                0.055528390318981026
+            ],
+            [
+                "that",
+                0.04927535621282564
+            ],
+            [
+                "what",
+                0.04920569791540917
+            ],
+            [
+                "so",
+                0.04374877833719304
+            ],
+            [
+                "is",
+                0.04284199070354193
+            ],
+            [
+                "you",
+                0.04282525681543177
+            ],
+            [
+                "in",
+                0.041846763129696506
+            ]
+        ]
+    },
+    "3": {
+        "text": [
+            " the side of gameplay and strategy-making as well.",
+            " together with gameplay, right?",
+            " short video on Starcraft and DeepBind.",
+            " He's been playing Starcraft pretty much since he's 5.",
+            " That would consider myself a good player, right?",
+            " on what we call supervised learning.",
+            " These algorithms, you have only access to the data.",
+            " In these types of algorithms, you're not trying to predict a label, but you're trying to",
+            " drone that is making a delivery or, for example, in a game, it could be Super Mario that's",
+            " navigating inside of your video game.",
+            " The algorithm itself, it's important to remember that the algorithm is the agent.",
+            " For example, in a video game, when Mario grabs a coin, for example, he wins points.",
+            " agreediness in the algorithm, right?",
+            " This is the game of called Atari Breakout.",
+            " In fact, it solves the game exactly like this right here.",
+            " And it turns out that the algorithm, the agent, can actually learn that",
+            " it found this hack in the solution.",
+            " So in this case, the actions that a neural network or an agent could take in this game",
+            " But what they found was even with that type of algorithm, they were able to surpass human level performance on over half of the game.",
+            " There were some games that you can see here were still below human level performance. But as we'll see, this was really like such an exciting advance because of the simplicity of the algorithm.",
+            " And how you know, clean the formulation of the training was you only needed a very little amount of prior knowledge to impose on to this neural network where to be able to learn how to play these games.",
+            " You never had to teach you any of the rules of the game, right? You only had to let it explore its environment play the game many, many times against itself and learn directly from that data.",
+            " What do you think when you look at this training algorithm that you can see here, right? What do you think are the shortcomings of this training algorithm? And which step, I guess specifically, if we wanted to deploy this approach into reality?",
+            " And you know, at the time, achieved incredibly impressive results. So for those of you who are not familiar with the game of go, the game of go is played on a 19 by 19 board.",
+            " The rough objective of go is to claim basically more board pieces than your opponent, right. And through the grid of, sorry, through the grid that you can see here, this 19 by 19 grid.",
+            " So this game, even though the rules are very simple in their logical definitions, is an extraordinarily complex game for an artificial algorithm to try and master.",
+            " So the objective here was to build a reinforcement learning algorithm to master the game of go, not only beating, you know, these gold standard softwares, but also what was at the time like an amazing result was to beat the grand master level player.",
+            " So the number one player in the world of go was a human, the human champion, obviously.",
+            " And using a reinforcement learning pipeline, they were able to defeat the grand champion human players. And the idea that's core was actually very simple.",
+            " And from this first step, the goal is to build like a policy that would imitate some of the rough patterns that a human type of player or human grand master would take based on given board state, the type of actions that they might execute.",
+            " The losers would try to negate all of the actions that they may have acquired from their human counterparts and try to actually learn new types of rules and new types of actions basically that might be very beneficial to achieving super human performance.",
+            " And finally, very much more recently, they extended this algorithm and showed that they could not even use the human grandmasters in the beginning to imitate from in the beginning and bootstrapped these algorithms.",
+            " or outperform the humans, but also outperform the solution that was created, which was bootstrapped by humans as well."
+        ],
+        "start_time": 136.72,
+        "end_time": 3393.9,
+        "topic_info": [
+            [
+                "game",
+                0.06535749172782612
+            ],
+            [
+                "algorithm",
+                0.057220139596558986
+            ],
+            [
+                "human",
+                0.05525269507730062
+            ],
+            [
+                "the",
+                0.055155278269891216
+            ],
+            [
+                "was",
+                0.04573476663830816
+            ],
+            [
+                "of",
+                0.04200876288025995
+            ],
+            [
+                "to",
+                0.040456012174028985
+            ],
+            [
+                "you",
+                0.03789492732364026
+            ],
+            [
+                "they",
+                0.037480103062484706
+            ],
+            [
+                "and",
+                0.03433633187833154
+            ]
+        ]
+    },
+    "10": {
+        "text": [
+            " For example, if you consider this example of an apple, observing a bunch of images of",
+            " apples, we want to detect in the future if we see a new image of an apple to detect that",
+            " this is indeed an apple.",
+            " uncover some of the underlying structure.",
+            " What we were calling basically these latent variables, these hidden features in your",
+            " For example, in this apple example, using unsupervised learning, the analogous example would basically",
+            " be to build a model that could understand and cluster certain parts of these images together.",
+            " Maybe it doesn't have to understand that necessarily this is an image of an apple, but it",
+            " needs to understand that this image of the red apple is similar.",
+            " It has the same latent features and semantic meaning as this black and white outline sketch",
+            " of the apple.",
+            " It's what it sees.",
+            " Again, in this apple example, we might now see that the agent doesn't necessarily learn",
+            " that this is an apple or it looks like these other apples.",
+            " Now it has to learn to, let's say, eat the apple, take an action, eat that apple because",
+            " it has learned that eating that apple makes it live longer or survive because it doesn't",
+            " Maybe you want to even provide two or three images to give it some sense of temporal information"
+        ],
+        "start_time": 268.64,
+        "end_time": 1340.9,
+        "topic_info": [
+            [
+                "apple",
+                0.21957710348060228
+            ],
+            [
+                "it",
+                0.09318496892171906
+            ],
+            [
+                "an",
+                0.08723990236079976
+            ],
+            [
+                "example",
+                0.08055246060734972
+            ],
+            [
+                "images",
+                0.07377924998682696
+            ],
+            [
+                "image",
+                0.06679254419018216
+            ],
+            [
+                "doesnt",
+                0.06679254419018216
+            ],
+            [
+                "understand",
+                0.06038886033611722
+            ],
+            [
+                "apples",
+                0.05289166149343894
+            ],
+            [
+                "features",
+                0.05289166149343894
+            ]
+        ]
+    },
+    "0": {
+        "text": [
+            " what are called rewards.",
+            " You want to maximize all of those rewards over many, many time steps in the future.",
+            " to these other components, which is called the reward.",
+            " Now the reward is a feedback by which we measure or we can try to measure the success of",
+            " Those actions may or may not result in rewards being collected and accumulated over time.",
+            " It's also very important to remember that not all actions result in immediate rewards.",
+            " You may take some actions that will result in a reward in a delayed fashion.",
+            " You may take an action today that results in a reward many some time from now.",
+            " For example, when we look at the total reward that an agent accumulates over the course of",
+            " its lifetime, we can simply sum up all of the rewards that an agent gets after a certain",
+            " time t.",
+            " So this capital R of t is the sum of all rewards from that point on into the future, into",
+            " It's rewarded time t plus the reward time t plus one plus t plus two and so on and so",
+            " these rewards, but instead what's called the discounted sum.",
+            " So you can see here, I've added this gamma factor in front of all of the rewards and that",
+            " discounting factor is essentially multiplied by every future reward that the agent sees",
+            " future rewards essentially worth less than rewards that we might see at this instant,",
+            " So for example, if I offered you a reward of $5 today or a reward of $5 in 10 years",
+            " from now, I think all of you would prefer that $5 today simply because we have that same",
+            " discounting factor applied to this processing, right?",
+            " We have that factor that that $5 is not worth as much to us if it's given to us 10 years",
+            " This discounting factor is like multiple, like I said, multiplied it every single future",
+            " reward exponentially.",
+            " And it's important to understand that also typically this discounting factor is, you know,",
+            " have a discounting factor greater than one, but in general, that's not something we're",
+            " So we already covered this R of T function, right?",
+            " R of T is the discounted sum of rewards from time T all the way into the future, time",
+            " But remember that this R of T, right, it's discounted number one and number two, we're going",
+            " take that will maximize this reward.",
+            " the expected total return would be of that agent if it took that action in that particular",
+            " What is the expected reward for that action to be taken?",
+            " future reward.",
+            " So how many people believe A would result in a higher return?",
+            " It will achieve a good reward. It will solve the game, right?",
+            " This would mean that essentially the target return, right, the predicted or the value that we're trying to predict, the target is going to always be maximized.",
+            " Now, for example, to do this, we want to formulate a loss function that's going to essentially represent our expected return if we're able to take all of the best actions.",
+            " Right. So, for example, if we select an initial reward plus selecting some action in our action space that maximizes our expected return,",
+            " then for the next future state, we need to apply that discounting factor and recursively apply the same equation.",
+            " Now, it's very important to remember that the reward signals in a Tari breakout are very sparse, right. You get a reward not necessarily based on the action that you take at this exact moment.",
+            " That is very dangerous in many cases because of the fact that it's always going to pick the best value for a given state. There's no stochasticity in that pipeline.",
+            " And that represents not only the best action that we should take, but let's denote this as basically the probability that selecting that action would result in a very desirable outcome for our network.",
+            " So not necessarily the value of that that action, but rather the probability that selecting that action would be the highest value, right.",
+            " So you don't care exactly about what is the numerical value that selecting this action takes or gives rise to rather, but rather what is the likelihood that selecting this action will give you the best performing value that you could expect.",
+            " Exact value itself doesn't matter. You only care about if selecting this action is going to give you with high likelihood the best one.",
+            " And finally, the reward in this very simplistic example is the distance that we travel before we crash.",
+            " So it runs its policy, which right now is untrained entirely until it terminates, right, until it goes outside of some bounds that we define, we measure basically the reward as the distance that we traveled before it terminated.",
+            " Now, because the vehicle, we know the vehicle terminated, we can assume that all of the actions that occurred in the later half of this trajectory were probably not very good actions because they came very close to termination.",
+            " So let's decrease the probability of all of those things happening again in the future and we'll take all of the things that happened in the beginning half of our training episode.",
+            " And we will increase their probabilities. Now, again, there's no reason why there shouldn't necessarily be a good action that we took in the first half of this trajectory and a bad action in the later half.",
+            " But it's simply because actions that are in the later half were closer to a failure and closer determination that we can assume, for example, that these were probably suboptimal actions.",
+            " But it's very possible that these are noisy rewards as well because it's such a sparse signal. It's very possible that you had some good actions at the end and you were actually trying to recover your car, but you were just too late.",
+            " Now, repeat this process again. Re-initialize the agent one more time and run it until completion. Now the agent goes a bit farther, right? Because you've decreased the probabilities at the end, increased the probabilities of the future.",
+            " So here we can see that the loss consists of two terms. The first term is this term in green, just called the log likelihood of selecting a particular action.",
+            " The second term is something that all of you are very familiar with already. This is simply the return at a specific time, right? So that's the expected return on the words that you would get after this time point.",
+            " Now, let's assume that we got a lot of reward for a particular action that had a high log probability or a high probability.",
+            " Right, if we got a lot of reward for a particular action that had high probability, that means that we want to increase that probability even further. So we do it even more or even more likelihood, we sampled that action again into the future.",
+            " On the other hand, if we selected or let's say if we obtained a reward that was very low for an action that had high likelihood, we want the inverse effect, right?",
+            " We never want to sample that action again in the future because it resulted in a low reward. Right, and you'll notice that this loss function right here by including this negative, we're going to minimize the likelihood of achieving any action that had low rewards in this trajectory.",
+            " Now, in our simplified example on the car example, all the things that had low rewards were exactly those actions that came closest to the termination part of the of the vehicle, right? All the things that had high rewards were the things that came in the beginning.",
+            " That's just the assumption that we make when defining our reward structure.",
+            " And I hope that all of this was very exciting to you today we have a very exciting lab and kick off for the competition and the deadline for these competitions will be well it was originally set to be Thursday, which is tomorrow at 11 p.m. Thank you."
+        ],
+        "start_time": 370.21999999999997,
+        "end_time": 3449.9,
+        "topic_info": [
+            [
+                "that",
+                0.05801664001074634
+            ],
+            [
+                "reward",
+                0.057919714218848325
+            ],
+            [
+                "the",
+                0.05095846481336505
+            ],
+            [
+                "rewards",
+                0.04216136885847706
+            ],
+            [
+                "we",
+                0.03903365768006126
+            ],
+            [
+                "in",
+                0.03416138213296013
+            ],
+            [
+                "action",
+                0.03397882456064825
+            ],
+            [
+                "future",
+                0.03372909508678165
+            ],
+            [
+                "of",
+                0.030904099680817056
+            ],
+            [
+                "this",
+                0.029594962159617655
+            ]
+        ]
+    },
+    "12": {
+        "text": [
+            " The first main piece of terminology is that of an agent.",
+            " An agent is a being, basically, that can take actions.",
+            " For example, you can think of an agent as a machine that is, let's say, an autonomous",
+            " In life, for example, all of you are agents in life.",
+            " The environment is the other kind of contrary approach or the contrary perspective to the",
+            " agent.",
+            " The environment is simply the world where that agent lives and where it operates.",
+            " The agent can send commands to that environment in the form of what are called actions.",
+            " capital A. It should be noted that agents at any point in time could choose amongst this,",
+            " Observations is essentially how the environment responds back to the agent.",
+            " The environment can tell the agent what it should be seeing based on those actions that",
+            " a particular agent in its environment.",
+            " of a particular action that an agent takes.",
+            " Why an agency? You're actually doing something?",
+            " How an agent would perform ideally in a particular situation or what would happen, right, if an agent took all of the ideal actions at any given state.",
+            " Now, we can send this action back to the environment in the form of the game to execute the next step, right. And as the agent moves through this environment, it's going to be responded with not only by new pixels that come from the game, but more importantly, some reward signal."
+        ],
+        "start_time": 427.03999999999996,
+        "end_time": 1728.9,
+        "topic_info": [
+            [
+                "agent",
+                0.15330116732584076
+            ],
+            [
+                "environment",
+                0.12473038581949454
+            ],
+            [
+                "an",
+                0.09288546380783565
+            ],
+            [
+                "the",
+                0.06730167615765958
+            ],
+            [
+                "contrary",
+                0.049275137630639704
+            ],
+            [
+                "life",
+                0.04582300996332843
+            ],
+            [
+                "in",
+                0.045739805196002924
+            ],
+            [
+                "actions",
+                0.04508715453250597
+            ],
+            [
+                "particular",
+                0.044749083530642275
+            ],
+            [
+                "can",
+                0.04399731279605561
+            ]
+        ]
+    },
+    "6": {
+        "text": [
+            " Of course, in some situations, your action space does not necessarily need to be a finite",
+            " Maybe you could take actions in a continuous space.",
+            " For example, when you're driving a car, you're taking actions on a continuous angle space",
+            " of what angle you want to steer that car.",
+            " You may steer at any continuous degree.",
+            " If we have a continuous action space, maybe we do something a bit more intelligent, maybe",
+            " policy distribution to obtain the optimal action.",
+            " a very large action space.",
+            " It's going to be very inefficient to try the approach on the left with a very large action space.",
+            " One time for every single element of your action space.",
+            " Now, if we have a continuous action space, we have to think about clever ways to work around that. In fact, there are now more recently, there are some solutions to achieve QLearning and continuous action spaces.",
+            " And remember those distributions can also take continuous forms. In fact, we've seen this in the last two lectures, right. In the generative lecture, we saw how VIEs could be used to predict Gaussian distributions over their latent space.",
+            " And the last lecture, we also saw how we could learn to predict uncertainties, which are continuous probability distributions using data. And just like that, we could also use this same formulation to move beyond discrete action spaces, like you can see here, which are one possible action, a probability associated to one possible action in a discrete set of possible actions.",
+            " Now we may have a space, which is not what action should I take go left, right, or send center, but rather how quickly should I move and what direction should I move, right. That is a continuous variable as opposed to a discrete variable. And you could say that now the answer should look like this, right.",
+            " Moving very fast to the right versus very slow to the or excuse me, very fast to the left versus very slow to the left has this continuous spectrum that we may want to model.",
+            " Now when we plot this entire distribution of taking an action, giving a state, you can see basically a very simple illustration of that right here. This distribution has most of its mass over, or sorry, it has all of its mass over the entire real number line, first of all, it has most of its mass, right, in the optimal action space that we want to take.",
+            " If we wanted to also try out different things and explore our space, we could sample from this distribution and still obtain some stochasticity.",
+            " Now let's look at an example of how we could actually model these continuous distributions and actually we've already seen some examples of this in the previous two lectures, like I mentioned, but let's take a look specifically in the context of reinforcement learning and policy gradient learning.",
+            " So instead of predicting this probability of taking an action, giving all possible states, which in this case there is now an infinite number of, because we're in the continuous domain, we can't simply predict a single probability for every possible action, because there is an infinite number of them.",
+            " So instead, what if we parameterized our action space by distribution, right, so let's take for example the Gaussian distribution.",
+            " To parameterize a Gaussian distribution, we only need two outputs, right, we need a mean and a variance, given the mean and a variance, we can actually have a probability mass and we can compute a probability over any possible action that we may want to take just from those two numbers.",
+            " So for example, in this image here, we may want to output a Gaussian that looks like this, right, its mean is centered at, let's see, negative 0.8 indicating that we should move basically left with a speed of 0.8 meters per second, for example.",
+            " And again, we can see that because this is a probability distribution, because of the format of policy networks, right, we're enforcing that this is a probability distribution, that means that the integral now of this of this outputs, right, by definition of it being a Gaussian must also integrate to 1.",
+            " The action that we could take is a steer angle, this is not a discrete variable, this is a continuous variable, it's actually an angle that could take any real number."
+        ],
+        "start_time": 505.64,
+        "end_time": 2445.9,
+        "topic_info": [
+            [
+                "continuous",
+                0.07032420765334672
+            ],
+            [
+                "space",
+                0.06700941566182703
+            ],
+            [
+                "we",
+                0.05558730185613585
+            ],
+            [
+                "action",
+                0.05464886991748449
+            ],
+            [
+                "distribution",
+                0.04955700903797679
+            ],
+            [
+                "to",
+                0.038946892638125466
+            ],
+            [
+                "probability",
+                0.03803943764330015
+            ],
+            [
+                "this",
+                0.03674247812834406
+            ],
+            [
+                "could",
+                0.036207880711437164
+            ],
+            [
+                "of",
+                0.035775369028310994
+            ]
+        ]
+    },
+    "5": {
+        "text": [
+            " Q function, which ties in a lot of these different components that I've just shared with",
+            " Now let's look at what this Q function is, right?",
+            " The Q function takes as input two different things.",
+            " at time T, and the Q function of these two pieces is going to denote or capture what",
+            " a really powerful function, right?",
+            " If you had access to this type of function, this Q function, I think you could actually",
+            " And let's suppose I gave you this magical Q function.",
+            " Does anyone have any ideas of how you could transform that Q function to directly infer",
+            " the highest Q values.",
+            " So just to repeat that one more time, the Q function tells us for any possible action,",
+            " Q function to start with, right?",
+            " give you this magical Q function.",
+            " But in reality, we're not given that Q function.",
+            " We have to learn that Q function using deep learning.",
+            " First of all, how can we construct and learn that Q function from data?",
+            " And then, of course, the final step is use that Q function to take some actions in the",
+            " But instead of first optimizing the Q function and finding the Q value and then using that",
+            " If we do that, if we can obtain this function, right, then we can directly sample from that",
+            " So maybe let's start by just digging a bit deeper into the Q function specifically,",
+            " Now, the Q function tells us, you know, the expected total return, or the total reward,",
+            " to understand what the Q value should be is sometimes quite unintuitive, right?",
+            " Can you imagine, you know, which of these two options might have a higher Q value for the network?",
+            " So now that we can see that sometimes obtaining the Q function can be a little bit",
+            " unintuitive, but the key point here is that if we have the Q function,",
+            " learn this Q function?",
+            " So that's our target and recall from previous lectures, if we have a target value, in this case, our q value is a continuous variable,",
+            " We can define what's called a q loss, which is essentially just a very simple mean squared error loss between these two continuous variables.",
+            " So for example, here we can see that given this state, the q function has the results of these three different values as a q value of 20, if it goes to the left, as a q value of three, if it stays in the same place, and it has a q value of zero, it's going to basically die after this iteration.",
+            " So before we get there, let me just revisit one more time the Q function illustration that we're looking at, right.",
+            " Now note that this now is a probability distribution. This is very different than a q function. A q function has actually no structure, right. The q values themselves can take any real number, right.",
+            " And that gives it a very rigorous version of how we can train this model that makes it a bit easier to train than q functions as well.",
+            " So one other very important advantage of having an output that is a probability distribution is actually going to tie back to this other issue of q functions and q neural networks that we saw before."
+        ],
+        "start_time": 750.74,
+        "end_time": 2165.9,
+        "topic_info": [
+            [
+                "function",
+                0.13534981472519303
+            ],
+            [
+                "value",
+                0.04716792547968299
+            ],
+            [
+                "can",
+                0.04185110241576021
+            ],
+            [
+                "that",
+                0.041367610818473274
+            ],
+            [
+                "if",
+                0.04056515714065078
+            ],
+            [
+                "this",
+                0.04048476756734207
+            ],
+            [
+                "we",
+                0.0393743388147629
+            ],
+            [
+                "the",
+                0.03681073384964673
+            ],
+            [
+                "of",
+                0.03305333008050473
+            ],
+            [
+                "is",
+                0.03249846129878144
+            ]
+        ]
+    },
+    "9": {
+        "text": [
+            " to try and build a Q function that captures the maximum or the best action that we could",
+            " The way we do that from a Q function is simply to pick the action that will maximize our",
+            " their Q value for every single possible action based on the state that we currently find",
+            " And then we pick the action that is going to result in the highest Q value.",
+            " following the gradients along this Q value curve and maximizing it as part of an optimization",
+            " Q function to optimize our value, we're going to find the first class of algorithms.",
+            " using that Q function to optimize our actions, what if we just try to directly optimize our",
+            " or the expected q value of this neural network at this particular state action pair.",
+            " And as output, you gave it, let's say, all n different q values, one q value for every single possible action.",
+            " You'd simply then look at that output and pick the action that has the kai sq value.",
+            " So our deep neural network that we're trying to train looks like this, right. It takes us input a state is trying to output and different numbers, those end different numbers correspond to the q value associated to end different actions, one q value per action.",
+            " Right. So the next step from this, we saw if we have this q value output, what we can do with it is we can make an action, or we can even, let me be more formal about it, we can develop what's called a policy function.",
+            " Policy function is a function that given a state, it determines what is the best action. So that's different than the q function, right. The q function tells us given a state, what is the best, or what is the value, the return of every action that we could take.",
+            " And we can determine that policy function directly from the q function itself simply by maximizing and optimizing all of the different q values for all of the different actions that we see here.",
+            " The optimal action here is simply going to be the maximum of these three q values. In this case, it's going to be 20 and then the action is going to be the corresponding action that comes from that 20, which is moving left.",
+            " And the second component here is that the policy that we're learning, right, the Q function is giving rise to that policy, which is the thing that we're actually using to determine what action to take given any state.",
+            " That policy is determined by, you know, deterministically optimizing that Q function. We simply look at the results from the Q function and apply our, or we look at the results of the Q function and we pick the action that has the best or the highest Q value.",
+            " And like I said, those are called policy grading algorithms and policy grading algorithms. The main difference is that instead of trying to infer the policy from the Q function, we're just going to build a neural network that will directly learn that policy function from the data, right.",
+            " Q function, we're trying to build a neural network outputs these Q values, one value per action, and we determine the policy by looking over this state of Q values, picking the value that has the highest and looking at its corresponding action.",
+            " Now with policy networks, the idea that we want to keep here is that instead of predicting the Q values themselves, let's directly try to optimize this policy function here. We're calling the policy function pi of s, right.",
+            " And that is the fact that q functions are naturally suited towards discrete action spaces. Now when we're looking at this policy network, we're outputting a distribution, right."
+        ],
+        "start_time": 777.54,
+        "end_time": 2176.9,
+        "topic_info": [
+            [
+                "function",
+                0.08276424166641183
+            ],
+            [
+                "policy",
+                0.07175715716634773
+            ],
+            [
+                "value",
+                0.068140241338938
+            ],
+            [
+                "the",
+                0.06473834050534605
+            ],
+            [
+                "action",
+                0.06390983612833337
+            ],
+            [
+                "that",
+                0.05293110739961027
+            ],
+            [
+                "we",
+                0.04750533289112075
+            ],
+            [
+                "is",
+                0.04389969085753637
+            ],
+            [
+                "to",
+                0.04175137386136856
+            ],
+            [
+                "values",
+                0.04101796330573017
+            ]
+        ]
+    },
+    "1": {
+        "text": [
+            " bottom, left or right, and the objective is to move it in a way that this ball that's coming down",
+            " towards the bottom of the screen can be bounced off of your paddle, reflected back up, and essentially",
+            " you want to break out, right, reflect that ball back up to the top of the screen towards the rainbow",
+            " portion, and keep breaking off.",
+            " Every time you hit a pixel on the top of the screen, you break off that pixel.",
+            " The objective of the game is to basically eliminate all of those rainbow pixels, right?",
+            " So you want to keep hitting that ball against the top of the screen until you remove all the pixels.",
+            " A, the ball is coming straight down towards us. That's our state.",
+            " Our action is to do nothing and simply reflect that ball back up vertically up.",
+            " The second situation, the state is basically that the ball is coming slightly at an angle,",
+            " we're not quite underneath it yet, and we need to move towards it and actually hit that ball in a way that, you know,",
+            " So hopefully that ball doesn't pass below us, then the game would be over.",
+            " but then B can bounce around, and there's more than that, what happens?",
+            " You're kind of only going up and down.",
+            " It's just bouncing up, hitting one point at a time from the top,",
+            " and breaking off very slowly the board that you can see here.",
+            " But in general, you see the part of the board that's being broken off",
+            " is towards the center of the board, right?",
+            " Not much on the edges of the board.",
+            " You're coming towards the ball, and what that implies is that you're sometimes",
+            " going to actually hit the corner of your paddle and have a very extreme angle",
+            " on your paddle and hit the sides of the board as well.",
+            " hitting the side of the board can have some kind of unexpected consequences",
+            " It's targeting the sides of the board.",
+            " But once it reaches a breakout on the side of the board,",
+            " We're now breaking off a ton of points.",
+            " which was a way that it even moves away from the ball as it's coming down",
+            " just so it could move back towards it, just to hit it on the corner",
+            " and execute on those corner parts of the board and break out a lot of pieces",
+            " One object is going to be the state of the board.",
+            " You can think of this as simply the pixels that are on the screen describing that board.",
+            " So it's an image of the board at a particular time.",
+            " If it moves to the right, because you can see that the ball is coming to the left of it, the most right, the game is over, right. So it needs to move to the left in order to do that in order to continue the game and the q value reflects that.",
+            " It usually takes a few time steps for that ball to travel back up to the top of the screen. So usually your rewards will be quite delayed, maybe at least by several time steps, sometimes even more if you're bouncing off of the corners of the screen.",
+            " And you can see the input on the left hand side is simply the raw pixels coming from the screen all the way to the actions of a controller on the right hand side.",
+            " And while the game itself, the logical rules are actually quite simple, the number of possible action spaces and possible states that this board could be placed into is greater than the number of atoms in the universe."
+        ],
+        "start_time": 1048.9,
+        "end_time": 3179.9,
+        "topic_info": [
+            [
+                "the",
+                0.08984096233394961
+            ],
+            [
+                "ball",
+                0.08031511503149545
+            ],
+            [
+                "board",
+                0.07613350788602562
+            ],
+            [
+                "screen",
+                0.05890278099898681
+            ],
+            [
+                "of",
+                0.05457126979734337
+            ],
+            [
+                "coming",
+                0.053090003399792196
+            ],
+            [
+                "towards",
+                0.05017479895338402
+            ],
+            [
+                "off",
+                0.04895553838174479
+            ],
+            [
+                "up",
+                0.04592849583002999
+            ],
+            [
+                "and",
+                0.040931130717182025
+            ]
+        ]
+    },
+    "13": {
+        "text": [
+            " So there are ways around this, right? The number one way around this is that people try to train these types of models in simulation, right?",
+            " Simulation is very safe because, you know, we're not going to actually be damaging anything real. It's still very inefficient because we have to run these algorithms a bunch of times and crash them a bunch of times just learn how not to crash.",
+            " But at least now, at least from a safety point of view, it's much safer. But, you know, the problem is that modern simulation engines for reinforcement learning and generally very broadly speaking, modern simulators for vision specifically do not at all capture reality very accurately.",
+            " In fact, there's a very famous notion called the sim-to-real gap, which is a gap that exists when you train algorithms in simulation, and they don't extend to a lot of the phenomena that we see and the patterns that we see in reality.",
+            " And one really cool result that I want to just highlight here is that when we're training reinforcement learning algorithms, we ultimately want them to be, you know, not operating in simulation.",
+            " And we want them to be in reality. And as part of our lab here at MIT, we've been developing this very, very cool brand new photorealistic simulation engine that goes beyond basically the paradigm of how simulators work today, which is basically defining a model of their environment and trying to, you know, synthesize that model.",
+            " These simulators are like glorified game engines, right? They all look very game-like when you look at them. But one thing that we've done is taken a data-driven approach using real data of the real world, can we build up synthetic environments that are super photorealistic and look like this?",
+            " So this is a cool result that we created here at MIT, developing this photorealistic simulation engine. This is actually an autonomous agent, not a real car, driving through our virtual simulator in a bunch of different types of different scenarios.",
+            " So this simulator is called Vista. It allows us to basically use real data that we do collect in the real world, but then re-simulate those same real roads.",
+            " So for example, let's say you take your car, you drive out on Massab, you collect data of Massab, you can now drop a virtual agent into that same simulated environment observing new viewpoints of what that scene might have looked like from different types of perturbations or types of angles that it might be exposed to.",
+            " And that allows us to train these agents now entirely using reinforcement learning, no human labels, but importantly allow them to be transferred into reality because there's no sim to real gap anymore.",
+            " And all of the training was done entirely in simulation. Then we took these policies and we deployed them on board our full scale autonomous vehicle. This is now in the real world, no longer in simulation.",
+            " And on the left hand side, you can see basically this car driving through this environment completely autonomous in the real world. No transfer learning is done here. There is no augmentation of data from real world data.",
+            " This is entirely trained using simulation and this represented actually the first time ever that reinforcement learning was used to train a policy end to end for an autonomous vehicle that could be deployed in reality."
+        ],
+        "start_time": 2893.9,
+        "end_time": 3109.9,
+        "topic_info": [
+            [
+                "simulation",
+                0.0749678850861251
+            ],
+            [
+                "real",
+                0.06905524041239401
+            ],
+            [
+                "them",
+                0.04610099718841245
+            ],
+            [
+                "reality",
+                0.03841749765701037
+            ],
+            [
+                "no",
+                0.03748394254306255
+            ],
+            [
+                "is",
+                0.03660062155428492
+            ],
+            [
+                "in",
+                0.03575038217015439
+            ],
+            [
+                "that",
+                0.03477557787150074
+            ],
+            [
+                "world",
+                0.03451362439994986
+            ],
+            [
+                "and",
+                0.03412563496244672
+            ]
+        ]
+    }
+}
