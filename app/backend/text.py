@@ -74,16 +74,12 @@ def summarize_text_in_chunks(text, session_path, force=True, chunk_size=2048, mi
     return overall_summary
 
 
-# Load models for topic extraction and sentence embeddings
-tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-large")
-flan_t5_model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-large")
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-
-
 def smart_segment_transcript(segments, session_path, similarity_threshold=0.65, min_cluster_size=60, max_cluster_size=180):
     """
     Perform context-aware clustering of transcript segments based on sentence similarity.
     """
+
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
     clusters = []
     current_cluster = [segments[0]]  # Initialize the first cluster
@@ -125,58 +121,13 @@ def smart_segment_transcript(segments, session_path, similarity_threshold=0.65, 
     return clusters
 
 
-def generate_topic_labels_for_clusters(clusters, session_path):
-    """Generate topic labels using Flan-T5 for each segment cluster."""
-
-    topics = []
-    logger.info("Generating topic labels for clusters...")
-
-    for cluster in tqdm(clusters, desc="Processing clusters"):
-        combined_text = " ".join([segment["text"] for segment in cluster])
-
-        # Generate a concise topic label using Flan-T5
-        inputs = tokenizer.encode(
-            "Generate a topic for: " + combined_text,
-            return_tensors="pt",
-            max_length=512,
-            truncation=True,
-        )
-
-        try:
-            summary_ids = flan_t5_model.generate(
-                inputs,
-                max_length=12,
-                min_length=3,
-                length_penalty=2.0,
-                num_beams=4,
-                early_stopping=True,
-            )
-            topic_label = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
-        except Exception as e:
-            logger.error(f"Error generating topic label: {e}")
-            topic_label = "Unknown Topic"
-
-        # Extract start and end time from the cluster
-        start_time = cluster[0]["start"]
-        end_time = cluster[-1]["end"]
-
-        topic_info = {
-            "topic_label": topic_label,
-            "start_time": start_time,
-            "end_time": end_time,
-            "texts": [segment["text"] for segment in cluster],
-        }
-        topics.append(topic_info)
-
-    # Save the topics to a JSON file
-    save_data(topics, Path(f"{session_path}/topics.json"))
-
-    return topics
-
-
 # Function to get text from topic_segments and generate encapsulating topics
 def generate_topic_labels_for_clusters(clusters, session_path):
     """Generate topic labels using Flan-T5 for each segment cluster."""
+
+    # Load models for topic extraction and sentence embeddings
+    tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-large")
+    flan_t5_model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-large")
 
     topics = []
     logger.info("Generating topic labels for clusters...")

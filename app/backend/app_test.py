@@ -77,7 +77,7 @@ with tab1:
             with st.spinner("Processing video... This may take a while."):
                 try:
                     # Process the video and create embeddings
-                    overall_summary, topic_summaries, topic_model = process_lecture_video(video_link, session_path, force=force)
+                    overall_summary, topic_summaries = process_lecture_video(video_link, session_path, force=force)
                     embeddings = create_embeddings(topic_summaries, session_path, force=force)
                 except Exception as e:
                     st.error(f"An error occurred during processing: {e}")
@@ -105,8 +105,8 @@ with tab2:
         for topic, data in topic_summaries.items():
             with st.expander(f"{topic}"):
                 st.write(f"**Summary:** {data['summary']}")
-                st.write(f"**Start Time:** {data['start_time']}")
-                st.write(f"**End Time:** {data['end_time']}")
+                st.write(f"**Start Time:** {data['start_time']:.2f} seconds")
+                st.write(f"**End Time:** {data['end_time']:.2f} seconds")
                 st.write(f"**Full Text:** {data['full_text']}")
     else:
         st.info("Please process a video first in the 'Video Processing' tab.")
@@ -130,6 +130,6 @@ with tab3:
 
                 st.subheader("Relevant Timeframes")
                 for idx, (start_time, end_time) in enumerate(timeframes):
-                    st.write(f"Topic {idx + 1}: {start_time} - {end_time}")
+                    st.write(f"Topic {idx + 1}: {start_time:.2f} - {end_time:.2f} seconds")
     else:
         st.info("Please process a video first in the 'Video Processing' tab.")
