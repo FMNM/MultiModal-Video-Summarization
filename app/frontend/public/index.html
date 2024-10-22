@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Video Summarizer and Q&A</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <h1>Video Summarizer and Q&A</h1>
+        <input type="text" id="video-url" placeholder="Enter YouTube Video URL">
+        <button id="submit-btn">Submit</button>
+    </div>
+
+    <!-- Results Page -->
+    <div id="results-page" class="page hidden">
+        <div class="container">
+            <!-- Left Side -->
+            <div class="left-side">
+                <div id="video-container"></div>
+                <div id="summaries">
+                    <h2>Overall Summary</h2>
+                    <p id="overall-summary"></p>
+                    <h2>Topic Summaries</h2>
+                    <div id="topic-summaries"></div>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="right-side">
+                <h2>Ask a Question</h2>
+                <div id="chatbox">
+                    <div id="chat-messages"></div>
+                    <input type="text" id="chat-input" placeholder="Type your question...">
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
